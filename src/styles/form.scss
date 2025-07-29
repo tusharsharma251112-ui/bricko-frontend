@@ -1,0 +1,39 @@
+.form-input {
+  height: 42px !important;
+
+  & .MuiInputBase-input {
+    color: var(--text-primary) !important;
+    font-size: 13px !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    line-height: 24px !important;
+    letter-spacing: 0.15px !important;
+  }
+}
+.form-label {
+  color: var(--text-primary) !important;
+  font-size: var(--font-size-body2) !important;
+  // font-style: var(----font-size-body2) !important;
+  font-weight: 400 !important;
+  line-height: 18px !important;
+  margin-bottom: 4px;
+}
+
+.email-otp {
+    border: 1px solid #DCDFE4;
+    width: 55px;
+    height: 50px;
+    margin-top: 13px;
+    margin-right: 16px;
+    border-radius: 8px;
+}
+.email-otp:focus {
+  border-color: var(--primary-main) !important; /* 🔵 Your focus color */
+  box-shadow: 0 0 0 2px rgba(17, 67, 118, 0.2); /* Optional glow */
+}
+
+.email-otp-title {
+    color: #111927;
+    font-size: 14px;
+    line-break: 20px;
+}

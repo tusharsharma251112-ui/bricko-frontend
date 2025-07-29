@@ -1,0 +1,14 @@
+.secondary-color {
+color: var(--text-secondary) !important;
+}
+.primary-color {
+color: var(--text-primary);
+}
+.grey-background {
+  background-color: var(--secondary-light);
+}
+.privacy-policy-text {
+  color: var(--primary-main) !important;
+  text-decoration: none !important;
+  cursor: pointer;
+}

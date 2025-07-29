@@ -1,0 +1,122 @@
+.h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
+}
+.h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
+}
+.h3 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
+}
+.h4 {
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
+}
+.h5 {
+  font-size: var(--font-size-h5);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+}
+.h6 {
+  font-size: var(--font-size-h6);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-relaxed);
+}
+.subtitle1 {
+  font-size: var(--font-size-subtitle1);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-relaxed);
+}
+.subtitle2 {
+  font-size: var(--font-size-subtitle2);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-relaxed);
+}
+.body1 {
+  font-size: var(--font-size-body1);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-relaxed);
+}
+.body2 {
+  font-size: var(--font-size-body2);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-relaxed);
+  color: #6c757d;
+}
+.caption {
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-relaxed);
+  color: #6c757d;
+}
+.overline {
+  font-size: var(--font-size-overline);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-relaxed);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-overline);
+}
+
+.font-inter {
+  font-family: var(--font-inter) !important;
+}
+
+.font-helvetica {
+  font-family: var(--font-helvetica) !important;
+}
+
+.fontw-100 {
+  font-weight: 100 !important;
+}
+.fontw-200 {
+  font-weight: 200 !important;
+}
+.fontw-300 {
+  font-weight: 300 !important;
+}
+.fontw-400 {
+  font-weight: 400 !important;
+}
+.fontw-500 {
+  font-weight: 500 !important;
+}
+.fontw-600 {
+  font-weight: 600 !important;
+}
+.fontw-700 {
+  font-weight: 700 !important;
+}
+
+.f-10 {
+  font-size: var(--font-size-10) !important;
+}
+.f-12 {
+  font-size: var(--font-size-caption) !important;
+}
+.f-13 {
+  font-size: var(--font-size-body2) !important;
+}
+.f-14 {
+  font-size: var(--font-size-body1) !important;
+}
+.f-16 {
+  font-size: var(--font-size-subtitle1) !important;
+}
+.f-18 {
+  font-size: var(--font-size-h6) !important;
+}
+.f-20 {
+  font-size: var(--font-size-20) !important;
+}
+.f-24 {
+  font-size: var(--font-size-h5) !important;
+}
+.f-40 {
+  font-size: var(--font-size-40) !important;
+}

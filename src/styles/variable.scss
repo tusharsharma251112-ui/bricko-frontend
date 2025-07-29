@@ -1,0 +1,217 @@
+:root {
+  /* === Font Families === */
+  --font-inter: "Inter";
+  --font-helvetica: Helvetica;
+
+  /* === Font Sizes === */
+  --font-size-h1: 3.5rem; /* 56px */
+  --font-size-h2: 3rem; /* 48px */
+  --font-size-h3: 2.25rem; /* 36px */
+  --font-size-h4: 2rem; /* 32px */
+  --font-size-h5: 1.5rem; /* 24px */
+  --font-size-h6: 1.125rem; /* 18px */
+  --font-size-subtitle1: 1rem; /* 16px */
+  --font-size-subtitle2: 0.875rem; /* 14px */
+  --font-size-body1: 0.875rem; /* 14px */
+  --font-size-body2: 0.8125rem; /* 13px */
+  --font-size-caption: 0.75rem; /* 12px */
+  --font-size-overline: 0.75rem; /* 12px */
+  --font-10: 0.625rem; /* 10px */
+  --font-size-40: 2.5rem; /* 40px */
+  --font-size-20: 1.25rem; /* 20px */
+
+  --icon-fontSize-sm: 1rem;
+  --icon-fontSize-md: 1.25rem;
+  --icon-fontSize-lg: 1.5rem;
+
+  /* === Font Weights === */
+  --font-weight-100: 100;
+  --font-weight-200: 200;
+  --font-weight-300: 300;
+  --font-weight-400: 400;
+  --font-weight-500: 500;
+  --font-weight-600: 600;
+  --font-weight-700: 700;
+  --font-weight-800: 800;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+
+  /* === Line Heights === */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.3;
+  --line-height-relaxed: 1.5;
+
+  /* === Letter Spacing === */
+  --letter-spacing-overline: 1px;
+
+  /* === Primary === */
+  --primary-main: #114376;
+  --primary-dark: #111927;
+
+  /* === Secondary === */
+  --secondary-light: #f1f1f4;
+  --secondary-main: #434a60;
+  --secondary-dark: #121621;
+
+  /* === Disbaled === */ 
+  --disabled: #E0E0E0;
+
+  /* === Text === */
+  --text-primary: #1a202c;
+  --text-secondary: #667085;
+  --text-disabled: #8a94a6;
+
+  /* === Error === */
+  --error-light: #fee4e2;
+  --error-main: #f04438;
+  --error-dark: #de3024;
+
+  /* === Warning === */
+  --warning-light: #fff3c6;
+  --warning-main: #de7101;
+  --warning-dark: #b84d05;
+
+  /* === Info === */
+  --info-light: #cff8fe;
+  --info-main: #22cbee;
+  --info-dark: #06aed4;
+
+  /* === Success === */
+  --success-light: #ccfbef;
+  --success-main: #15b79f;
+  --success-dark: #0e9382;
+
+  /* === Shades of Primary === */
+  --shades-primary-50: #f3f6f8;
+  --shades-primary-100: #e7ecf1;
+  --shades-primary-200: #cfd9e4;
+  --shades-primary-300: #b8c7d6;
+  --shades-primary-400: #a0b4c8;
+  --shades-primary-500: #88a1ba;
+  --shades-primary-600: #708ead;
+  --shades-primary-700: #587b9f;
+  --shades-primary-800: #416991;
+  --shades-primary-900: #295684;
+  --shades-primary-950: #114376;
+
+  /* === California === */
+  --california-50: #fef3e1;
+  --california-100: #fde1b3;
+  --california-200: #fcce82;
+  --california-300: #fcb950;
+  --california-400: #fbaa2b;
+  --california-500: #fb9c0c;
+  --california-600: #f79009;
+  --california-700: #f18006;
+  --california-800: #eb7104;
+  --california-900: #e25702;
+  --california-950: #e25702;
+
+  /* === Chateau Green === */
+  --chateau-green-50: #e5f6ec;
+  --chateau-green-100: #c1e8cf;
+  --chateau-green-200: #99d8b1;
+  --chateau-green-300: #6dca92;
+  --chateau-green-400: #49bf7b;
+  --chateau-green-500: #16b364;
+  --chateau-green-600: #0aa45a;
+  --chateau-green-700: #00914e;
+  --chateau-green-800: #008042;
+  --chateau-green-900: #084c2e;
+  --chateau-green-950: #084c2e;
+
+  /* === Kepple / Kopje === */
+  --kopje-50: #f0fdfa;
+  --kopje-100: #ccfbef;
+  --kopje-200: #9af5e1;
+  --kopje-300: #5fe9ce;
+  --kopje-400: #2ed3b8;
+  --kopje-500: #15b79f;
+  --kopje-600: #0e9382;
+  --kopje-700: #107569;
+  --kopje-800: #115e56;
+  --kopje-900: #134e48;
+  --kopje-950: #042f2c;
+
+  /* === Neon Blue === */
+  --neon-blue-50: #efe8fc;
+  --neon-blue-100: #d6c6f6;
+  --neon-blue-200: #9e77ed;
+  --neon-blue-300: #9e77ed;
+  --neon-blue-400: #8757e8;
+  --neon-blue-500: #6f39de;
+  --neon-blue-600: #6434d8;
+  --neon-blue-700: #6941c6;
+  --neon-blue-800: #4526c6;
+  --neon-blue-900: #2b19b8;
+  --neon-blue-950: #2b19b8;
+
+  /* === Neutral === */
+  --neutral-50: #f9fafb;
+  --neutral-100: #f1f1f4;
+  --neutral-200: #dcdfe4;
+  --neutral-300: #b3b9c6;
+  --neutral-400: #8a94a6;
+  --neutral-500: #667085;
+  --neutral-600: #565e73;
+  --neutral-700: #434a60;
+  --neutral-800: #313749;
+  --neutral-900: #212636;
+  --neutral-950: #121621;
+
+  /* === Red Orange === */
+  --red-orange-50: #feebee;
+  --red-orange-100: #fdcdd2;
+  --red-orange-200: #ec9a9a;
+  --red-orange-300: #e27374;
+  --red-orange-400: #eb5451;
+  --red-orange-500: #f04438;
+  --red-orange-600: #e13b37;
+  --red-orange-700: #cf3131;
+  --red-orange-800: #c22a2a;
+  --red-orange-900: #b3201e;
+  --red-orange-950: #b3201e;
+
+  /* === Royal Blue === */
+  --royal-blue-50: #f5f6fe;
+  --royal-blue-100: #e4e8fd;
+  --royal-blue-200: #ced3fa;
+  --royal-blue-300: #b3b8f9;
+  --royal-blue-400: #9697f4;
+  --royal-blue-500: #7771ee;
+  --royal-blue-600: #5b4ddb;
+  --royal-blue-700: #4338ca;
+  --royal-blue-800: #3f339b;
+  --royal-blue-900: #36307a;
+  --royal-blue-950: #36307a;
+
+  /* === Tomato Orange === */
+  --tomato-orange-50: #fff3ed;
+  --tomato-orange-100: #ffe2d4;
+  --tomato-orange-200: #ffc1a8;
+  --tomato-orange-300: #ffa280;
+  --tomato-orange-400: #ff9771;
+  --tomato-orange-500: #ff6c47;
+  --tomato-orange-600: #fe4011;
+  --tomato-orange-700: #ed3507;
+  --tomato-orange-800: #9f2c0f;
+  --tomato-orange-900: #7e1110;
+  --tomato-orange-950: #440608;
+
+  /* === Shakespeare === */
+  --shakespeare-50: #e1f7fe;
+  --shakespeare-100: #b4ebfc;
+  --shakespeare-200: #83dff9;
+  --shakespeare-300: #50d1f3;
+  --shakespeare-400: #29c8ee;
+  --shakespeare-500: #10bee8;
+  --shakespeare-600: #06aed4;
+  --shakespeare-700: #0099b9;
+  --shakespeare-800: #0086a0;
+  --shakespeare-900: #006373;
+  --shakespeare-950: #006373;
+}
+body {
+  font-family: var(--font-inter), sans-serif !important;
+}
