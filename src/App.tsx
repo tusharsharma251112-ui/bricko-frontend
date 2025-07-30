@@ -1,47 +1,25 @@
 import * as React from 'react';
 import './App.css';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import { Box, Typography, CircularProgress } from '@mui/material';
 
 // --- Import ErrorBoundary ---
-import ErrorBoundary from './components/ErrorBoundary'; // Adjust path as needed
+import ErrorBoundary from './components/ErrorBoundary';
 
-// --- Import Public Route Components ---
-import { AuthLayout } from './layouts/AuthLayout'; // Adjust path if needed
-import { publicRoutes } from './routes/PublicRoutes'; // Adjust path if needed
+// --- Route Config Imports ---
+import { AuthLayout } from './layouts/AuthLayout';
+import { publicRoutes } from './routes/PublicRoutes';
+import { privateRoutes } from './routes/PrivateRoute'; // ✅ Corrected import name
+import AppLayout from './components/dashboard/AppLayout';
 
-// --- Private Route Components (Placeholders) ---
-const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', bgcolor: '#f0f2f5' }}>
-      <Box sx={{ p: 2, bgcolor: '#1976d2', color: 'white', boxShadow: 2 }}>
-        <Typography variant="h6">My App Dashboard</Typography>
-      </Box>
-      <Box sx={{ flexGrow: 1, p: 3 }}>
-        {children}
-      </Box>
-      <Box sx={{ p: 2, bgcolor: '#333', color: 'white', textAlign: 'center' }}>
-        <Typography variant="body2">&copy; 2025 My App</Typography>
-      </Box>
-    </Box>
-  );
-};
 
-const DashboardPage: React.FC = () => {
-  return (
-    <Box>
-      <Typography variant="h4" gutterBottom>Dashboard Overview</Typography>
-      <Typography variant="body1">Welcome to your private dashboard! This content is only visible to authenticated users.</Typography>
-    </Box>
-  );
-};
-
-const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const isAuthenticated = false; // Replace with actual logic
+// --- PrivateRoute Wrapper ---
+const PrivateRoute: React.FC = () => {
+  const isAuthenticated = true; // 🔐 Replace with real auth logic
   if (!isAuthenticated) {
     return <Navigate to="/auth/login" replace />;
   }
-  return <>{children}</>;
+  return <Outlet />;
 };
 
 export default function App(): React.JSX.Element {
@@ -54,7 +32,7 @@ export default function App(): React.JSX.Element {
       }
     >
       <Routes>
-        {/* --- Public Routes Group --- */}
+        {/* --- Public Routes --- */}
         <Route path="/auth" element={<AuthLayout imageSrc="/assets/auth-illustration.svg" />}>
           {publicRoutes.map((route) => (
             <Route
@@ -76,30 +54,31 @@ export default function App(): React.JSX.Element {
           <Route index element={<Navigate to="login" replace />} />
         </Route>
 
-        {/* --- Private Routes Group (commented out, update when ready) --- */}
-        {/* 
+        {/* --- Private Routes --- */}
         <Route element={<PrivateRoute />}>
-          <Route path="/" element={<Navigate to="/dashboard" replace />} />
-          <Route
-            path="/dashboard"
-            element={
-              <React.Suspense
-                fallback={
-                  <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', minHeight: '300px' }}>
-                    <CircularProgress />
-                  </Box>
+          <Route element={<AppLayout><Outlet /></AppLayout>}>
+            {privateRoutes.map((route) => (
+              <Route
+                key={route.path}
+                path={route.path}
+                element={
+                  <React.Suspense
+                    fallback={
+                      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', minHeight: '300px' }}>
+                        <CircularProgress />
+                      </Box>
+                    }
+                  >
+                    <route.component />
+                  </React.Suspense>
                 }
-              >
-                <AppLayout>
-                  <DashboardPage />
-                </AppLayout>
-              </React.Suspense>
-            }
-          />
+              />
+            ))}
+            <Route index element={<Navigate to="dashboard" replace />} />
+          </Route>
         </Route>
-        */}
 
-        {/* --- 404 Not Found Route --- */}
+        {/* --- Catch-All Route --- */}
         <Route
           path="*"
           element={

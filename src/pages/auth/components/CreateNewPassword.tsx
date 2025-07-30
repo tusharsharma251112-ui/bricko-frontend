@@ -8,18 +8,37 @@ import * as zod from "zod";
 import CustomInput from "../../../components/shared/CustomInput";
 import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutlined";
 import CustomButton from "../../../components/shared/CustomButton";
+import PasswordUpdateDialog from "../../../components/modals/PasswordUpdateDialog";
 // import { VerifyOtpForm } from "./components/VerifyOtp";
 // import { DynamicLogo } from "../../components/Logo";
 // import BackButton from "../../components/shared/BackButton";
 // import CreateNewPassword from "./components/CreateNewPassword";
 
 const schema = zod.object({
- password: zod.string().min(1, { message: "Password is required" }),
- retypePassword: zod.string().min(1, { message: "Password is required" }),
-});
+    password: zod
+      .string()
+      .min(1, { message: 'Password is required' })
+      .min(8, { message: 'Password must be at least 8 characters' })
+      .regex(
+        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&#^()[\]{}\-_=+|<>.,;:])[A-Za-z\d@$!%*?&#^()[\]{}\-_=+|<>.,;:]+$/,
+        {
+          message: 'Use at least 8 characters with letters, numbers, and special symbols.',
+        }
+      ),
+    retypePassword: zod.string().min(1, { message: 'Please retype your password' }),
+  })
+  .refine((data) => data.password === data.retypePassword, {
+    path: ['retypePassword'],
+    message: 'Passwords do not match',
+  });
 const defaultValues = { password: "", retypePassword: ""};
+interface CreatePasswordProps {
+onSave: () => void;
+}
 
-export default function CreateNewPassword()  {
+export default function CreateNewPassword({
+  onSave,
+}: CreatePasswordProps)  {
     const navigate = useNavigate(); // Hook to get the navigate function
       const [isPending, setIsPending] = React.useState<boolean>(false);
       const [showOtp, setShowOtp] = React.useState<boolean>(false);
@@ -27,14 +46,16 @@ export default function CreateNewPassword()  {
     const {
         control,
         handleSubmit,
-        watch,
         reset,
+        watch,
         formState: { errors, isValid },
       } = useForm({
         defaultValues,
         resolver: zodResolver(schema),
         mode: "onChange",
       });
+      const password = watch("password");
+const retypePassword = watch("retypePassword");
 
       const login = async (values: any) => {
     setIsPending(true);
@@ -96,6 +117,7 @@ export default function CreateNewPassword()  {
                 inputlabel="Create Password"
                 placeholder="Enter password"
                 errors={errors}
+                showError={false}
                 onFocusHelpText={"Use at least 8 characters with letters, numbers, and special symbols.​"}
                 margin={{ mt: '2%', px: '2%' }}
                 required
@@ -124,7 +146,8 @@ export default function CreateNewPassword()  {
                 size="large"
                 type="submit"
                 className="f-13 fontw-700"
-                // disabled={!email || !isValid}
+                 onClick={() =>onSave()}
+                disabled={!password || !retypePassword || !isValid}
                 // isLoading={isPending}
                 sx={{
                   background:
@@ -135,7 +158,7 @@ export default function CreateNewPassword()  {
                 }}
                 width={90}
               >
-                <Box display="flex" alignItems="center">
+                <Box display="flex" alignItems="center" >
                   <Typography component="span" className="f-13 fontw-700">
                     Save
                   </Typography>
@@ -149,6 +172,8 @@ export default function CreateNewPassword()  {
                 </Box>
               </CustomButton></Box>
             </Stack>
-          </form></>
+          </form>
+          
+          </>
     );
 }

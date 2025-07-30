@@ -17,6 +17,7 @@
   --font-size-caption: 0.75rem; /* 12px */
   --font-size-overline: 0.75rem; /* 12px */
   --font-10: 0.625rem; /* 10px */
+  --font-8: 0.5rem;
   --font-size-40: 2.5rem; /* 40px */
   --font-size-20: 1.25rem; /* 20px */
 
@@ -211,6 +212,7 @@
   --shakespeare-800: #0086a0;
   --shakespeare-900: #006373;
   --shakespeare-950: #006373;
+  --gray-mid: #ABABAB;
 }
 body {
   font-family: var(--font-inter), sans-serif !important;

@@ -131,7 +131,7 @@ console.log(showOtp);
     //   </Link>
     // </Box>
     <>
-    {showOtp ?<VerifyOtpForm onClick={handleBack}/> :
+    {showOtp ?<VerifyOtpForm onClick={handleBack} path={"login"}/> :
     <>
     <Stack spacing={3}>
       <Box sx={{ display: 'inline-block', fontSize: 0 }}>

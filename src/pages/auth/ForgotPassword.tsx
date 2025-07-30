@@ -12,9 +12,10 @@ import { VerifyOtpForm } from "./components/VerifyOtp";
 import { DynamicLogo } from "../../components/Logo";
 import BackButton from "../../components/shared/BackButton";
 import CreateNewPassword from "./components/CreateNewPassword";
+import PasswordUpdateDialog from "../../components/modals/PasswordUpdateDialog";
 
 const schema = zod.object({
-  email: zod.string().min(1, { message: "Email is required" }).email({ message: "Invalid email address" }),
+  email: zod.string().email({ message: "Invalid email address" }),
 });
 
 const defaultValues = { email: ""};
@@ -25,6 +26,7 @@ export default function ForgotPassword(): React.JSX.Element {
   const [isPending, setIsPending] = React.useState<boolean>(false);
   const [showOtp, setShowOtp] = React.useState<boolean>(false);
   const [index, setIndex] = React.useState(0);
+  const [openPasswordUpdateDialog, setOpenPasswordUpdateDialog]  = React.useState(false);
 // const [showEmail, setShowEmail] = useState<boolean>(true);
 
   const {
@@ -89,9 +91,9 @@ export default function ForgotPassword(): React.JSX.Element {
   };
   const onClick  =() => {
     if (index === 1) {
-reset({ email: "" });
-    setIndex(0);
-    setShowOtp(false);
+// reset({ email: "" });
+    // setIndex(0);
+    setShowOtp(true);
     } else {
     navigate('/auth/login')
 
@@ -100,6 +102,17 @@ reset({ email: "" });
   const callBackfunction = () => {
     setIndex(1);
     setShowOtp(false);
+  }
+  const onNewPasswordSave = () => {
+    // alert("ss");
+    setOpenPasswordUpdateDialog(true);
+  };
+  const onPasswordModalClose = () => {
+    setOpenPasswordUpdateDialog(false);
+  };
+  const navigateSignIn = () => {
+    setOpenPasswordUpdateDialog(false);
+    navigate('/auth/login');
   }
   console.log(showOtp);
   return (
@@ -176,11 +189,12 @@ reset({ email: "" });
               </CustomButton></Box>
             </Stack>
           </form></>: 
-          <CreateNewPassword/>
+          <CreateNewPassword onSave={onNewPasswordSave}/>
           }
           </Stack>
         </>
       )}
+      {openPasswordUpdateDialog && <PasswordUpdateDialog open={openPasswordUpdateDialog} onClose={onPasswordModalClose} onSignIn={navigateSignIn} />}
     </>
   );
 }

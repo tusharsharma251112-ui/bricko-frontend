@@ -60,6 +60,7 @@ interface CustomInputProps<T extends FieldValues> {
   value?: string;
   sx?: SxProps<Theme>;
   onFocusHelpText?: string;
+  showError?: boolean;
 }
 
 const CustomInput = <T extends FieldValues>({
@@ -95,6 +96,7 @@ const CustomInput = <T extends FieldValues>({
   value,
   sx = {},
   onFocusHelpText,
+  showError=true
 }: CustomInputProps<T>): JSX.Element => {
   const [showPassword, setShowPassword] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
@@ -280,26 +282,26 @@ const CustomInput = <T extends FieldValues>({
               fullWidth
             >
               {getInput()}
-              {(errors[name] || errMessage) && (
+              {(showError && (errors[name] || errMessage)) && (
                 <FormHelperText sx={{ marginLeft: 0 }}>
                   {(errors[name]?.message as string) || errMessage}
                 </FormHelperText>
               )}
-              {onFocusHelpText && isFocused ? (
-                <Typography
-                  className="f-12 fontw-400"
-                  sx={{ color: "var(--text-secondary)", ...margin }}
-                >
-                  {onFocusHelpText}
-                </Typography>
-              ) : !onFocusHelpText && helpText ? (
-                <Typography
-                  className="f-12 fontw-400"
-                  sx={{ color: "var(--text-secondary)", ...margin }}
-                >
-                  {helpText}
-                </Typography>
-              ) : null}
+              {(onFocusHelpText || helpText) && (
+  <Typography
+    className="f-12 fontw-400"
+    sx={{
+      color:
+        isFocused && (errors[name] || errMessage)
+          ? 'error.main'
+          : 'var(--text-secondary)',
+      mt: '4px',
+      ...margin,
+    }}
+  >
+    {isFocused && onFocusHelpText ? onFocusHelpText : helpText}
+  </Typography>
+)}
             </FormControl>
           );
         }}

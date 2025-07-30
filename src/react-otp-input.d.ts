@@ -10,6 +10,8 @@ declare module 'react-otp-input' {
     renderInput?: (props: any) => React.ReactNode;
     shouldAutoFocus?: boolean;
     skipDefaultStyles?: boolean;
+    isInputNum?: boolean;
+    inputType?: string;
   }
 
   const OTPInput: React.FC<OTPInputProps>;
